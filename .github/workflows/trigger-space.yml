@@ -1,0 +1,24 @@
+name: Trigger Multiple Hugging Face Spaces with Random Delay
+
+on:
+  schedule:
+    # 每隔8小时触发一次
+    - cron: '0 */8 * * *'
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get random delay
+        id: random_delay
+        run: echo "::set-output name=delay::$((RANDOM % 120))"
+      
+      - name: Delay execution
+        run: sleep ${{ steps.random_delay.outputs.delay }}m
+
+      - name: Wake up Hugging Face Spaces
+        run: |
+          for url in https://efan3536-sillytavern.hf.space https://efan3536-clewd.hf.space; do
+            curl -X GET "$url"
+            sleep 5
+          done
