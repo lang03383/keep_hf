@@ -18,7 +18,7 @@ jobs:
 
       - name: Wake up Hugging Face Spaces
         run: |
-          for url in https://efan3536-sillytavern.hf.space https://efan3536-clewd.hf.space https://naki123-sillytavern.hf.space https://efan3536-jiuguan.hf.space; do
+          for url in https://efan3536-sillytavern.hf.space https://efan3536-clewd.hf.space https://naki123-sillytavern.hf.space https://efan3536-jiuguan.hf.space https://lang03383-tteesstt.hf.space; do
             curl -X GET "$url"
             sleep 5
           done
